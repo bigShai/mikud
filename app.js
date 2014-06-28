@@ -1,5 +1,4 @@
 var request = require('request');
-var htmlparser = require("htmlparser");
 var _ = require('underscore');
 
 const ISRAEL_POST_URL = 'http://www.israelpost.co.il/zip_data1.nsf/SearchZip?OpenAgent&';

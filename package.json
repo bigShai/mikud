@@ -1,6 +1,6 @@
 {
   "name": "mikud",
-  "version": "1.2.0",
+  "version": "1.2.1",
   "description": "Gets an Israeli zipcode by address. Simple as that.",
   "main": "app.js",
   "dependencies": {
