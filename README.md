@@ -1,7 +1,7 @@
 Mikud - מיקוד
 =========
 
-Gets an israeli zipcode by address. lightweight& simple.
+Gets an israeli zipcode by address. lightweight & simple.
 
 Usage
 --------------
@@ -11,8 +11,6 @@ npm install mikud
 ```
 ```sh
 var mikud = require('mikud');
-
-
 mikud({
     city: 'תל אביב',
     street: 'פרישמן',
