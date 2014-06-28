@@ -21,21 +21,14 @@ function getZipCode(address, callback) {
     });
 
     request.get(uri, {}, function(err, response, body) {
-        if(err) return callback(err);
+        if(err) return callback("Error calling israelpost");
 
-        new htmlparser.Parser(new htmlparser.DefaultHandler(function (error, dom) {
-            if (error) return callback(err);
-
-            try{
-                var zipcode = parseInt(dom[0].children[3].children[0].data.substring(5));
-                if (zipcode > 999999 && zipcode < 10000000) {
-                    callback(undefined, zipcode);
-                }
-            } catch(err) {
-                callback("Error getting zipcode");
-            }
-
-        })).parseComplete(body);
+        var res = body.substring(body.indexOf('RES'), body.indexOf('</body>'));
+        if (res.indexOf('RES8') == 0) {
+            callback(undefined, res.substring(4));
+        } else {
+            callback('Unrecognized address');
+        }
     });
 }
 

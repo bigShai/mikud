@@ -5,7 +5,6 @@
   "main": "app.js",
   "dependencies": {
     "request": "~2.36.0",
-    "htmlparser": "~1.7.7",
     "underscore": "~1.6.0"
   },
   "devDependencies": {},
@@ -20,7 +19,8 @@
         "mikud",
         "zipcode",
         "israel",
-        "address"
+        "address",
+        "post"
   ],
   "repository": {
         "type": "git",
