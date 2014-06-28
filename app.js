@@ -11,13 +11,13 @@ function objToParams(obj) {
 }
 
 
-function getZipCode(city, street, houseNumber, entrance, callback) {
+function getZipCode(address, callback) {
 
     var uri = ISRAEL_POST_URL + objToParams({
-        Location: city,
-        Street: street,
-        House: houseNumber,
-        Entrance: entrance
+        Location: address.city,
+        Street: address.street,
+        House: address.houseNumber,
+        Entrance: address.entrance
     });
 
     request.get(uri, {}, function(err, response, body) {
@@ -37,17 +37,6 @@ function getZipCode(city, street, houseNumber, entrance, callback) {
 
         })).parseComplete(body);
     });
-}
-
-
-function example() {
-    var city = 'תל אביב';
-    var street = 'פרישמן';
-    var house = 16;
-
-    getZipCode(city, street, house, undefined, function(err, zipcode){
-        console.log(zipcode);
-    })
 }
 
 module.exports = getZipCode;
