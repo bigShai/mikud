@@ -9,7 +9,10 @@
     "underscore": "~1.6.0"
   },
   "devDependencies": {},
-  "author": "bigshai",
+  "author": {
+      "name": "bigshai",
+      "email": "reshef.shai@gmail.com"
+  },
   "contributors": [
     "Shai Reshef <reshef.shai@gmail.com>"
   ],
