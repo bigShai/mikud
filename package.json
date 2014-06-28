@@ -1,29 +1,32 @@
 {
   "name": "mikud",
-  "version": "1.0.0",
+  "version": "1.2.1",
   "description": "Gets an Israeli zipcode by address. Simple as that.",
   "main": "app.js",
   "dependencies": {
     "request": "~2.36.0",
-    "htmlparser": "~1.7.7",
     "underscore": "~1.6.0"
   },
   "devDependencies": {},
-  "author": "Shai Reshef",
+  "author": {
+      "name": "reshefshai",
+      "email": "reshef.shai@gmail.com"
+  },
   "contributors": [
     "Shai Reshef <reshef.shai@gmail.com>"
   ],
-  "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+  "keywords": [
+        "mikud",
+        "zipcode",
+        "israel",
+        "address",
+        "post"
+  ],
+  "repository": {
+        "type": "git",
+        "url": "https://github.com/bigShai/mikud.git"
   },
-"keywords": [
-    "mikud",
-    "zipcode",
-    "israel",
-    "address"
-],
-"repository": {
-    "type": "git",
-    "url": "git://github.com/fb55/htmlparser2.git"
-}
+  "engines": {
+    "node": ">=0.1.33"
+  }
 }

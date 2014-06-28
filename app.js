@@ -1,5 +1,4 @@
 var request = require('request');
-var htmlparser = require("htmlparser");
 var _ = require('underscore');
 
 const ISRAEL_POST_URL = 'http://www.israelpost.co.il/zip_data1.nsf/SearchZip?OpenAgent&';
@@ -11,43 +10,25 @@ function objToParams(obj) {
 }
 
 
-function getZipCode(city, street, houseNumber, entrance, callback) {
+function getZipCode(address, callback) {
 
     var uri = ISRAEL_POST_URL + objToParams({
-        Location: city,
-        Street: street,
-        House: houseNumber,
-        Entrance: entrance
+        Location: address.city,
+        Street: address.street,
+        House: address.houseNumber,
+        Entrance: address.entrance
     });
 
     request.get(uri, {}, function(err, response, body) {
-        if(err) return callback(err);
+        if(err) return callback("Error calling israelpost");
 
-        new htmlparser.Parser(new htmlparser.DefaultHandler(function (error, dom) {
-            if (error) return callback(err);
-
-            try{
-                var zipcode = parseInt(dom[0].children[3].children[0].data.substring(5));
-                if (zipcode > 999999 && zipcode < 10000000) {
-                    callback(undefined, zipcode);
-                }
-            } catch(err) {
-                callback("Error getting zipcode");
-            }
-
-        })).parseComplete(body);
+        var res = body.substring(body.indexOf('RES'), body.indexOf('</body>'));
+        if (res.indexOf('RES8') == 0) {
+            callback(undefined, res.substring(4));
+        } else {
+            callback('Unrecognized address');
+        }
     });
-}
-
-
-function example() {
-    var city = 'תל אביב';
-    var street = 'פרישמן';
-    var house = 16;
-
-    getZipCode(city, street, house, undefined, function(err, zipcode){
-        console.log(zipcode);
-    })
 }
 
 module.exports = getZipCode;
