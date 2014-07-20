@@ -24,7 +24,7 @@ function getZipCode(address, callback) {
 
         var res = body.substring(body.indexOf('RES'), body.indexOf('</body>'));
         if (res.indexOf('RES8') == 0) {
-            callback(undefined, res.substring(4));
+            callback(undefined, res.substring(4, 11));
         } else {
             callback('Unrecognized address');
         }
